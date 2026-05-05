@@ -92,13 +92,13 @@ aws amplify create-branch --app-id "$APP_ID" --branch-name main
 Create `amplify.yml` in the project root. Set `baseDirectory` per
 framework:
 
-| Framework | baseDirectory |
-|-----------|---------------|
-| Vite (React/Vue) | `dist` |
-| CRA | `build` |
-| Next.js (export) | `out` |
-| Next.js (SSR) | `.next` |
-| Angular | `dist/<project-name>/browser` |
+| Framework        | baseDirectory                 |
+| ---------------- | ----------------------------- |
+| Vite (React/Vue) | `dist`                        |
+| CRA              | `build`                       |
+| Next.js (export) | `out`                         |
+| Next.js (SSR)    | `.next`                       |
+| Angular          | `dist/<project-name>/browser` |
 
 **Wrong `baseDirectory` = blank page in production** (silent failure).
 Always match the framework table above.
@@ -152,6 +152,7 @@ aws amplify start-job --app-id "$APP_ID" --branch-name main --job-type RELEASE
 ```
 
 ## Secrets Management
+
 **Sandbox:** Set secrets via CLI:
 
 ```bash
@@ -234,6 +235,7 @@ Production URL format: `https://<branch>.<app-id>.amplifyapp.com`
 After deployment, check job status with `aws amplify list-jobs --app-id "$APP_ID" --branch-name main --query 'jobSummaries[0].status'` and verify `amplify_outputs.json` endpoints match expected values.
 
 ## Post-Deployment
+
 **Rollback:** Revert via Git and redeploy:
 
 ```bash
